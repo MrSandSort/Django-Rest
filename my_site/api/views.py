@@ -5,3 +5,9 @@ from .serializers import BlogPostSerializers
 class BlogPostListCreate(generics.ListCreateAPIView):
     queryset= BlogPost.objects.all()
     serializer_class= BlogPostSerializers
+
+class BlogPostRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+    queryset= BlogPost.objects.all()
+    serializer_class= BlogPostSerializers
+    lookup_field= "pk"
+    
