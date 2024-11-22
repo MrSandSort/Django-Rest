@@ -1,0 +1,10 @@
+<form method="POST">
+    {% csrf_token %}
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+    <label for="password_confirm">Confirm Password:</label>
+    <input type="password" id="password_confirm" name="password_confirm" required>
+    <button type="submit">Register</button>
+</form>
