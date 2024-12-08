@@ -1,22 +1,15 @@
 from rest_framework import serializers
-from .models import user, admin
+from .models import ImageUpload
 
-class UserModelSerializers(serializers.ModelSerializer):
-    class Meta:
-        model= user
-        fields='__all__'
+class ImageUploaderSerializer(serializers.ModelSerializer):
 
-class AdminModelSerializers(serializers.ModelSerializer):
+    image_url= serializers.SerializerMethodField()
     class Meta:
-        model= admin
-        fields='__all__'
+        model= ImageUpload
+        fields= ['id','image','uploaded_at','image_url']
 
-class UserLoginSerializers(serializers.ModelSerializer):
-    class Meta:
-        models= user
-        fields=['email', 'password']
-
-class AdminLoginSerializers(serializers.ModelSerializer):
-    class Meta:
-        models= admin
-        fields=['email','password']
+        
+    def get_image_url(self,obj):
+        if obj.image:
+            return obj.image.url
+        return None

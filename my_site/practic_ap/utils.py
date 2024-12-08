@@ -13,7 +13,5 @@ def verify_access_token(token):
     except Exception as e:
         return False, None 
     
-def hashPassword(password):
-    return make_password(password=password,'' )
 
 
